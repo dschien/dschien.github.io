@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Daniel Schien</title><link href="http://www.cs.bris.ac.uk/home/csxds/" rel="alternate"></link><link href="dschien.github.io/feeds/all.atom.xml" rel="self"></link><id>http://www.cs.bris.ac.uk/home/csxds/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>STS Agent Based Model Building</title><link href="http://www.cs.bris.ac.uk/home/csxds/blog/2014/06/16/sts-agents/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:www.cs.bris.ac.uk/home/csxds,2014-06-16:blog/2014/06/16/sts-agents/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Daniel Schien</title><link href="dschien.github.io/" rel="alternate"></link><link href="dschien.github.io/feeds/all.atom.xml" rel="self"></link><id>dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>STS Agent Based Model Building</title><link href="dschien.github.io/blog/2014/06/16/sts-agents/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/sts-agents/</id><summary type="html">
 
 &lt;p&gt;Step by step instructions to follow during the Agent Based Modelling day in the socio-technical systems unit 
 at the University of Bristol. 
@@ -24,12 +24,12 @@ at the University of Bristol.
 &lt;h1&gt;Building the Model&lt;/h1&gt;
 &lt;h2&gt;Overview&lt;/h2&gt;
 &lt;h3&gt;Domain Model&lt;/h3&gt;
-&lt;h3&gt;Sequence Diagram&lt;/h3&gt;</summary></entry><entry><title>Testing Pelican</title><link href="http://www.cs.bris.ac.uk/home/csxds/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:www.cs.bris.ac.uk/home/csxds,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
+&lt;h3&gt;Sequence Diagram&lt;/h3&gt;</summary></entry><entry><title>Testing Pelican</title><link href="dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
 
 &lt;p&gt;You have to start somewhere
 &lt;/p&gt;
 &lt;h1&gt;I test pelican&lt;/h1&gt;
-&lt;p&gt;This is my first post&lt;/p&gt;</summary></entry><entry><title>Testing Notebook</title><link href="http://www.cs.bris.ac.uk/home/csxds/blog/2014/03/11/testing-notebook/" rel="alternate"></link><updated>2014-03-11T11:00:00+00:00</updated><author><name>Daniel Schien</name></author><id>tag:www.cs.bris.ac.uk/home/csxds,2014-03-11:blog/2014/03/11/testing-notebook/</id><summary type="html">&lt;div class="ipynb"&gt;
+&lt;p&gt;This is my first post&lt;/p&gt;</summary></entry><entry><title>Testing Notebook</title><link href="dschien.github.io/blog/2014/03/11/testing-notebook/" rel="alternate"></link><updated>2014-03-11T11:00:00+00:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-03-11:blog/2014/03/11/testing-notebook/</id><summary type="html">&lt;div class="ipynb"&gt;
 
 
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
