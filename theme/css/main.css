@@ -116,7 +116,7 @@ body > div > div {
 
 .heading, body > header h1, h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto", "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif;
-    font-style: italic
+    /*font-style: italic*/
 }
 
 .sans, body, body > header h2, article header p.meta, article > footer, #content .blog-index footer, html .gist .gist-file .gist-meta, #blog-archives a.category, #blog-archives time, aside.sidebar section, body > footer {
@@ -829,13 +829,16 @@ body > nav ul {
 
     body > nav li.header-brand {
         font-size: 1.2em;
+
         border-right: 1px solid #b0b0b0;
         margin-right: .4em
     }
 
     body > nav li.header-brand a {
         padding-right: 1.4em;
+        font-family: 'Permanent Marker', cursive;
         border-right: 1px solid #dedede
+        font-size:
     }
 
     body > nav a {
@@ -863,7 +866,8 @@ body > nav ul {
 
     body > nav li + li a {
         padding-top: .3em;
-        padding-left: .8em
+        padding-left: .8em;
+        font-family: 'Permanent Marker', cursive;
     }
 
     body > nav form {
