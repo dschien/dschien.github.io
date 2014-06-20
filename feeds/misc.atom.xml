@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Daniel Schien</title><link href="http://dschien.github.io/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>http://dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Code für Forschung</title><link href="http://dschien.github.io/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>http://dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>STS Agent Based Model Building</title><link href="http://dschien.github.io/blog/2014/06/16/sts-agents/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/sts-agents/</id><summary type="html">
+
+&lt;p&gt;Step by step instructions to follow during the Agent Based Modelling day in the socio-technical systems unit 
+at the University of Bristol. 
+&lt;/p&gt;
+&lt;h1&gt;Overview&lt;/h1&gt;
+&lt;h1&gt;Table of Contents&lt;/h1&gt;
+&lt;h1&gt;Preparation&lt;/h1&gt;
+&lt;h2&gt;Repast Simphony&lt;/h2&gt;
+&lt;h2&gt;Virtual Machine&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download link&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Download&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download for Win/Mac/Linux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Sources from Github&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;How to use github&lt;/li&gt;
+&lt;li&gt;Checkout by commit tag with command line or GUI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Building the Model&lt;/h1&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;h3&gt;Domain Model&lt;/h3&gt;
+&lt;h3&gt;Sequence Diagram&lt;/h3&gt;</summary></entry><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
 
 &lt;p&gt;You have to start somewhere
 &lt;/p&gt;
