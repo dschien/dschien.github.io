@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Daniel Schien</title><link href="dschien.github.io/" rel="alternate"></link><link href="/atom.xml" rel="self"></link><id>dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>STS Agent Based Model Building</title><link href="dschien.github.io/blog/2014/06/16/sts-agents/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/sts-agents/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Daniel Schien</title><link href="dschien.github.io/" rel="alternate"></link><link href="dschien.github.io/atom.xml" rel="self"></link><id>dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>STS Agent Based Model Building</title><link href="dschien.github.io/blog/2014/06/16/sts-agents/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/sts-agents/</id><summary type="html">
 
 &lt;p&gt;Step by step instructions to follow during the Agent Based Modelling day in the socio-technical systems unit 
 at the University of Bristol. 
