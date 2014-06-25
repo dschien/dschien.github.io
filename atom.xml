@@ -1,13 +1,825 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Code für Forschung</title><link href="http://dschien.github.io/" rel="alternate"></link><link href="/atom.xml" rel="self"></link><id>http://dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Code für Forschung</title><link href="http://dschien.github.io/" rel="alternate"></link><link href="/atom.xml" rel="self"></link><id>http://dschien.github.io/</id><updated>2014-06-16T13:00:00+01:00</updated><entry><title>STS Agent Based Model Building</title><link href="http://dschien.github.io/blog/2014/06/16/sts-agents/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/sts-agents/</id><summary type="html">
+&lt;p&gt;Step by step instructions to follow during the Agent Based Modelling day in the socio-technical systems unit 
+at the University of Bristol. 
+&lt;/p&gt;
+&lt;h2 id="table-of-contents"&gt;Table of Contents&lt;/h2&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#table-of-contents"&gt;Table of Contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#preparation"&gt;Preparation&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#repast-simphony"&gt;Repast Simphony&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#virtual-machine"&gt;Virtual Machine&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#starting-the-vm"&gt;Starting the VM&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#direct-install"&gt;Direct Install&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installing-plugins"&gt;Installing Plugins&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#sources-from-github"&gt;Sources from Github&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#changing-to-a-specific-commit"&gt;Changing to a specific commit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#building-the-model"&gt;Building the Model&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#relogo-basic-concepts"&gt;Relogo Basic Concepts&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#terms"&gt;Terms&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#development-cycle"&gt;Development Cycle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#relogo-gui"&gt;Relogo GUI&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#sequence-diagram"&gt;Sequence Diagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#phase-1-project-foundations"&gt;Phase 1 - Project Foundations&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#creating-a-new-project"&gt;Creating a new project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#creating-a-new-worker-turtle"&gt;Creating a new worker turtle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#worker-turtle-complete"&gt;Worker Turtle Complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#preparing-userobserver"&gt;Preparing UserObserver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#userobserver-complete"&gt;UserObserver Complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-numworkers-variable-in-userglobalsandpanelfactory"&gt;Create numWorkers Variable in UserGlobalsAndPanelFactory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#complete-userglobalsandpanelfactory"&gt;Complete UserGlobalsAndPanelFactory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-job-class"&gt;Create Job Class&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#start-test-run"&gt;Start Test Run&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#github-commit"&gt;Github commit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#phase-2-working-on-jobs"&gt;Phase 2 - Working on Jobs&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#add-properties-to-class-job"&gt;Add properties to class Job&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#make-worker-work-on-jobs"&gt;Make Worker work on Jobs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#worker-turtle-complete_1"&gt;Worker Turtle complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#control-number-of-jobs"&gt;Control number of Jobs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#make-observer-manage-job-pool"&gt;Make Observer manage Job Pool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#userobserver-complete_1"&gt;UserObserver Complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#github-commit_1"&gt;Github commit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#run-the-project"&gt;Run the project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#phase-3-adding-monitoring"&gt;Phase 3 - Adding Monitoring&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#add-a-method-for-open-and-done-job-size"&gt;Add a method for open and done job size&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#add-new-data-sinks-for-open-and-closed-jobs"&gt;Add new Data Sinks for open and closed Jobs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#add-a-file-sink"&gt;Add a File Sink&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#add-new-chart"&gt;Add new Chart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#run"&gt;Run&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#automatically-stop-the-simulation-on-jobs-complete"&gt;Automatically stop the simulation on Jobs complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#userobserver-complete_2"&gt;UserObserver complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#run_1"&gt;Run&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#github-commit_2"&gt;Github commit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#phase-4-normalising"&gt;Phase 4 - Normalising&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#refactoring"&gt;Refactoring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#initial-jobs-by-requirements-normaly-distributed-using-libraries"&gt;Initial Jobs by requirements, normaly distributed - using libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#calculating-the-job-requirements-upper-limit-in-userobserver"&gt;Calculating the Job Requirements upper limit in UserObserver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#creating-jobs-with-requirement-levels-in-userobserver"&gt;Creating Jobs with Requirement Levels in UserObserver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#userobserver-complete_3"&gt;UserObserver complete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#run_2"&gt;Run&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#github-commit_3"&gt;Github commit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h1 id="preparation"&gt;Preparation&lt;/h1&gt;
+&lt;p&gt;We'are using repast simphony as modelling environment.
+There are two options to install this on your computer:
+- A) download the distribution as a binary (Windows/OSX) or install as a plugin to Eclipse.
+- B) download a VirtualBox virtual machine pre-configured&lt;/p&gt;
+&lt;p&gt;Option B) requires you to download a 4GB archive but it guarantees, that you can run all code examples.
+Option A) requires that you download the code examples separately &lt;/p&gt;
+&lt;h2 id="repast-simphony"&gt;Repast Simphony&lt;/h2&gt;
+&lt;h2 id="virtual-machine"&gt;Virtual Machine&lt;/h2&gt;
+&lt;p&gt;You must have Oracle VirtualBox installed on your computer.
+- &lt;a href="https://www.dropbox.com/sh/a69w6cm104o1dpz/AACAs_tCvXgrEyce5-724SiLa"&gt;VM Download link&lt;/a&gt;
+- &lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;Oracle VirtualBox&lt;/a&gt;
+- You also need the virtual box extensions from the VirtualBox download page.&lt;/p&gt;
+&lt;h3 id="starting-the-vm"&gt;Starting the VM&lt;/h3&gt;
+&lt;p&gt;Once you downloaded the VM it should be a matter of double clicking the &lt;code&gt;ABM.vbox&lt;/code&gt; file to bring focus
+to the VirtualBox settings window.&lt;/p&gt;
+&lt;p&gt;You'll need to amend the location of the hard disk image file in the settings dialog.
+Choose the SATA controller "Add Harddisk" &amp;gt; Choose existing and choose the &lt;code&gt;abm_vm.vdi&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vm storage settings" src="http://dschien.github.io/images/201406/virtualbox_settings.png" style="width: 606px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;p&gt;You can find additional instructions in this &lt;a href="/4t6gk7zve0b5hqa/ABM.mp4"&gt;video&lt;/a&gt;
+&lt;video controls="" height="None" poster="None" preload="none" width="None"&gt;&lt;source src="https://dl.dropboxusercontent.com/s/4t6gk7zve0b5hqa/ABM.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'&gt;&lt;/source&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;h2 id="direct-install"&gt;Direct Install&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download for Win/Mac/Linux from &lt;a href="http://repast.sourceforge.net/download.php"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For Linux you need Eclipse from &lt;a href="http://www.eclipse.org/downloads/"&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plus you need to install &lt;strong&gt;all&lt;/strong&gt; of the following plugins:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Repast from this update site (http://mirror.anl.gov/repastsimphony)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;From the default Kepler update site (is preconfigured):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GMF Tooling 3.1.0&lt;/li&gt;
+&lt;li&gt;GMF Tooling Runtime Extensions 3.1.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;From the Groovy Update Site: http://dist.springsource.org/release/GRECLIPSE/e4.3/&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Extra Groovy Compilers&lt;/li&gt;
+&lt;li&gt;Groovy-Eclipse&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="installing-plugins"&gt;Installing Plugins&lt;/h3&gt;
+&lt;p&gt;Go to &lt;em&gt;Help&lt;/em&gt;&amp;gt; &lt;em&gt;Install New Software&lt;/em&gt;
+&lt;img alt="eclipse update" src="http://dschien.github.io/images/201406/eclipse_update.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;click "Add"&lt;/li&gt;
+&lt;li&gt;Paste in the url to your plugin as above and a name after your liking (I use the url as a name)&lt;/li&gt;
+&lt;li&gt;Wait until the plugin index has finished loading&lt;/li&gt;
+&lt;li&gt;Pick your plugins&lt;/li&gt;
+&lt;li&gt;Accept licenses if necessary&lt;/li&gt;
+&lt;li&gt;Repeat as necessary&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="sources-from-github"&gt;Sources from Github&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;You can use the command line or the GUI for Windows/ MacOS&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Checkout by commit tag with command line or GUI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the repository is available &lt;a href="https://github.com/dschien/NormalJobs"&gt;https://github.com/dschien/NormalJobs&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;The command to clone is: &lt;code&gt;git clone https://github.com/dschien/NormalJobs.git&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="changing-to-a-specific-commit"&gt;Changing to a specific commit&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;In the GUI there are buttons to do it&lt;/li&gt;
+&lt;li&gt;On the command line do&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log&lt;/code&gt; to find a tag&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout &amp;lt;tag&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="building-the-model"&gt;Building the Model&lt;/h1&gt;
+&lt;p&gt;The goal is to develop an alternative modeling exploration to reproduce the results from 
+"Early estimation of project performance: The application of a system dynamics rework model"&lt;/p&gt;
+&lt;p&gt;In particular we're interested in reproduce the project performance measurements.
+&lt;img alt="work done" src="http://dschien.github.io/images/201406/project-performance.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;h2 id="relogo-basic-concepts"&gt;Relogo Basic Concepts&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ReLogo is based on Eclipse IDE&lt;/li&gt;
+&lt;li&gt;creates Repast Simphony models with &lt;strong&gt;turtles, links, patches, and observers&lt;/strong&gt;. &lt;/li&gt;
+&lt;li&gt;Using the Logo domain specific language based on the Groovy (Groovy: A dynamic language for the Java platform) dynamic language. &lt;/li&gt;
+&lt;li&gt;ReLogo freely interoperates with Groovy and Java and run as a regular Repast Simphony model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="terms"&gt;Terms&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Agent Terminology&lt;/th&gt;
+&lt;th&gt;Relogo Equivalent&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Agent&lt;/td&gt;
+&lt;td&gt;Turtle&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Environment&lt;/td&gt;
+&lt;td&gt;Observer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="development-cycle"&gt;Development Cycle&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Code your Agents, Environment and Observer&lt;/li&gt;
+&lt;li&gt;Run the simulation inside the Relogo GUI &lt;/li&gt;
+&lt;li&gt;Log output to files or interface to other tools for analysis&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="relogo-gui"&gt;Relogo GUI&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;visualisation of simulation space&lt;/li&gt;
+&lt;li&gt;display of simulation results in charts and tables&lt;/li&gt;
+&lt;li&gt;define connectors to external analysis applications&lt;/li&gt;
+&lt;li&gt;set simulation parameters for simulation run
+&lt;img alt="work done" src="http://dschien.github.io/images/201406/relogo_gui.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="sequence-diagram"&gt;Sequence Diagram&lt;/h3&gt;
+&lt;!-- contents of sd for https://www.websequencediagrams.com/
+title Job Progress
 
+note right of Worker: create new instances
+Observer-&gt;Worker: initialisation
+Observer-&gt;Job: initialisation
+Observer-&gt;OpenJobPool: initialisation
+Observer-&gt;DoneJobPool: initialisation
+
+loop each time step
+note right of Worker: executed in each time step
+alt worker has no Job
+    Observer-&gt;OpenJobPool: get next job
+    Observer-&gt;Worker: assignJob
+else worker has finished Job
+    Observer-&gt;Worker: removeJob
+    Observer-&gt;DoneJobPool: move Job to done Jobs
+else worker needs more time
+    Worker-&gt;Job: increment done level
+end       
+
+end
+--&gt;
+&lt;p&gt;&lt;img alt="sequence diagram" src="http://dschien.github.io/images/201406/sd.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;h2 id="phase-1-project-foundations"&gt;Phase 1 - Project Foundations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;We'll create a new project of type 'Relogo'&lt;/li&gt;
+&lt;li&gt;Add turtles representing Agents&lt;/li&gt;
+&lt;li&gt;Add a UserObserver representing the environment&lt;/li&gt;
+&lt;li&gt;Add a &lt;code&gt;setup&lt;/code&gt; method to initialise the simulation and a &lt;code&gt;step&lt;/code&gt; method to define the actions taking place in each time step  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="creating-a-new-project"&gt;Creating a new project&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Select the Relogo perspective&lt;/li&gt;
+&lt;li&gt;Right click on workspace&lt;/li&gt;
+&lt;li&gt;Select New &amp;gt; ReLogo Project&lt;/li&gt;
+&lt;li&gt;Title "NormalJobs"&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="creating-a-new-worker-turtle"&gt;Creating a new worker turtle&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Right click src/normaljobs.relogo&lt;/li&gt;
+&lt;li&gt;Select New&amp;gt; Turtle&lt;/li&gt;
+&lt;li&gt;Title "Worker"&lt;/li&gt;
+&lt;li&gt;Define new method &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;step&lt;/span&gt;&lt;span class="o"&gt;(){}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="worker-turtle-complete"&gt;Worker Turtle Complete&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Plural&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stop&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReLogoTurtle&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ReLogoTurtle&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="preparing-userobserver"&gt;Preparing UserObserver&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open src/normaljobs.relogo/UserObserver&lt;/li&gt;
+&lt;li&gt;Remove comments around &lt;code&gt;step&lt;/code&gt; and &lt;code&gt;go&lt;/code&gt; methods&lt;/li&gt;
+&lt;li&gt;Rename &lt;code&gt;createTurtles&lt;/code&gt; to &lt;code&gt;createWorkers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Replace constant number with variable &lt;code&gt;numWorkers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Rename target of go method to &lt;code&gt;workers&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete body of &lt;code&gt;ask&lt;/code&gt; closure&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="userobserver-complete"&gt;UserObserver Complete&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stop&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UserObserver&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="n"&gt;clearAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;createWorkers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="n"&gt;ask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="create-numworkers-variable-in-userglobalsandpanelfactory"&gt;Create &lt;code&gt;numWorkers&lt;/code&gt; Variable in &lt;code&gt;UserGlobalsAndPanelFactory&lt;/code&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Add new slider to change the number of workers
+    &lt;code&gt;addSliderWL ("numWorkers", "Number of Workers", 1 , 1 , 1000 , 11)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete others&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="complete-userglobalsandpanelfactory"&gt;Complete UserGlobalsAndPanelFactory&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;factories&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractReLogoGlobalsAndPanelFactory&lt;/span&gt;
+
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UserGlobalsAndPanelFactory&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;AbstractReLogoGlobalsAndPanelFactory&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;addGlobalsAndPanelComponents&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+
+        &lt;span class="n"&gt;addSliderWL&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"numWorkers"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Number of Workers"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="create-job-class"&gt;Create Job Class&lt;/h3&gt;
+&lt;p&gt;We'll need to track the completion level for each Job. We encapsulate this in a new object type.
+1. Create a new class 
+2. Name 'Job'&lt;/p&gt;
+&lt;h3 id="start-test-run"&gt;Start Test Run&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click Play &amp;gt; NormalJobs Model&lt;/li&gt;
+&lt;li&gt;In the Relogo GUI Click the power-on button to initialise&lt;/li&gt;
+&lt;li&gt;Click play&lt;/li&gt;
+&lt;li&gt;Click Stop&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="github-commit"&gt;Github commit&lt;/h3&gt;
+&lt;p&gt;You can get the github sources via commit &lt;a href="https://github.com/dschien/NormalJobs/commit/c9fca9d84b652a524ca1b2c478df288eb7b8a8bf"&gt;c9fca9d84b652a524ca1b2c478df288eb7b8a8bf&lt;/a&gt; &lt;/p&gt;
+&lt;h2 id="phase-2-working-on-jobs"&gt;Phase 2 - Working on Jobs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Creating new jobs in job pools&lt;/li&gt;
+&lt;li&gt;Workers adds to completion&lt;/li&gt;
+&lt;li&gt;Observer maintains job pools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="add-properties-to-class-job"&gt;Add properties to class &lt;code&gt;Job&lt;/code&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Add a property &lt;code&gt;double numRequirements&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;Add a property &lt;code&gt;double completionLevel = 0&lt;/code&gt; to track the level of completeness of this job&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="make-worker-work-on-jobs"&gt;Make Worker work on Jobs&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;In turtle &lt;code&gt;Worker&lt;/code&gt; create class property &lt;code&gt;Job job&lt;/code&gt; and a property &lt;code&gt;double increment = 1&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;in &lt;code&gt;step&lt;/code&gt; method, if has job and the complemetionlevel is smaller than requirements then increment completion level by 1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;add method &lt;code&gt;isJobDone&lt;/code&gt; return &lt;code&gt;true&lt;/code&gt; if job complete, &lt;code&gt;false&lt;/code&gt; otherwise&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="worker-turtle-complete_1"&gt;Worker Turtle complete&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Plural&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stop&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReLogoTurtle&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="cm"&gt;/**&lt;/span&gt;
+&lt;span class="cm"&gt; * Worker Agent&lt;/span&gt;
+&lt;span class="cm"&gt; * @author schien&lt;/span&gt;
+&lt;span class="cm"&gt; *&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Worker&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ReLogoTurtle&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="n"&gt;Job&lt;/span&gt; &lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;
+    &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;increment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+    &lt;span class="cm"&gt;/**&lt;/span&gt;
+&lt;span class="cm"&gt;     * Increment completion level by increment if completion level less than requirements&lt;/span&gt;
+&lt;span class="cm"&gt;     * @return&lt;/span&gt;
+&lt;span class="cm"&gt;     */&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;completionLevel&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;completionLevel&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;increment&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="cm"&gt;/**&lt;/span&gt;
+&lt;span class="cm"&gt;     * Check if job done.&lt;/span&gt;
+&lt;span class="cm"&gt;     * @return true if done, false otherwise&lt;/span&gt;
+&lt;span class="cm"&gt;     */&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;isJobDone&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;completionLevel&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;  &lt;span class="nb"&gt;false&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="control-number-of-jobs"&gt;Control number of Jobs&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new variable &lt;code&gt;numJobs&lt;/code&gt; in &lt;code&gt;UserGlobalsAndPanelFactory&lt;/code&gt; to control the number of Jobs&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="make-observer-manage-job-pool"&gt;Make Observer manage Job Pool&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Create two new members &lt;code&gt;openJobs&lt;/code&gt; and &lt;code&gt;doneJobs&lt;/code&gt; both of type Queue&lt;/li&gt;
+&lt;li&gt;In the setup method create jobs with a requirement level of 100&lt;/li&gt;
+&lt;li&gt;you can use a for loop as you know from java or a range expression such as&lt;code&gt;(0..&amp;lt;numJobs).each{}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;adding to a queue can be done with the &lt;code&gt;add&lt;/code&gt; method from the java &lt;a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html"&gt;Collections API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;or you can use the Groovy &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; operator as in &lt;code&gt;this.openJobs &amp;lt;&amp;lt; new Job(requirements:100)&lt;/code&gt;
+3.. In the go method, &lt;/li&gt;
+&lt;li&gt;iterate over each worker, implement as a closure to the ask method
+ &lt;code&gt;Groovy
+ ask(workers()){ worker -&amp;gt;
+    // do something with the worker
+ }&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;check if a worker has a job, &lt;/li&gt;
+&lt;li&gt;if it doesn't -&amp;gt; assign a job,&lt;/li&gt;
+&lt;li&gt;let him work on it&lt;/li&gt;
+&lt;li&gt;if it does have a job -&amp;gt; check if the job is complete&lt;/li&gt;
+&lt;li&gt;if it is complete -&amp;gt; take the job away, add it to the &lt;code&gt;doneJob&lt;/code&gt; pool&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="userobserver-complete_1"&gt;UserObserver Complete&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunEnvironment&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stop&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UserObserver&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="n"&gt;clearAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numJobs&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="n"&gt;createWorkers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="n"&gt;ask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt; &lt;span class="n"&gt;worker&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                    &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; 
+                &lt;span class="p"&gt;}&lt;/span&gt; 
+            &lt;span class="p"&gt;}&lt;/span&gt; 
+            &lt;span class="c1"&gt;// let the worker work on it&lt;/span&gt;
+            &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isJobDone&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt;
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;
+                &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;       
+    &lt;span class="p"&gt;}&lt;/span&gt;   
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="github-commit_1"&gt;Github commit&lt;/h3&gt;
+&lt;p&gt;You can get the github sources via commit &lt;a href="https://github.com/dschien/NormalJobs/commit/051e412de17cf1bf6fe94199f4380ae0bb51c3e8"&gt;051e412de17cf1bf6fe94199f4380ae0bb51c3e8&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="run-the-project"&gt;Run the project&lt;/h3&gt;
+&lt;p&gt;What do you see?
+What do would like to see?&lt;/p&gt;
+&lt;h2 id="phase-3-adding-monitoring"&gt;Phase 3 - Adding Monitoring&lt;/h2&gt;
+&lt;p&gt;We'll add monitors, so that we can track how our workers are completing jobs
+We'll also add logging of output to file to plot in excel
+And we'll plot output in a chart&lt;/p&gt;
+&lt;h3 id="add-a-method-for-open-and-done-job-size"&gt;Add a method for open and done job size&lt;/h3&gt;
+&lt;p&gt;Repast Relogo allows us to create data sinks that track the change of variables over time.
+These require to access the number of open and done jobs in our queues. Relogo requires that 
+they are accessible via methods.
+1. Create new methods &lt;code&gt;getNumDoneJobs&lt;/code&gt; and &lt;code&gt;getNumOpenJobs&lt;/code&gt; and return the size of the queues&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getNumDoneJobs&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="add-new-data-sinks-for-open-and-closed-jobs"&gt;Add new Data Sinks for open and closed Jobs&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Start the Relogo GUI&lt;/li&gt;
+&lt;li&gt;Right-click the Data Sinks Node, title 'Jobs'&lt;/li&gt;
+&lt;li&gt;Select an aggregate Source, keep tick count in 'standard' set tab&lt;/li&gt;
+&lt;li&gt;In the tab "Method data sources" select agent type "UserObserver" and method 'getNumOpenJobs', set 'Open Jobs' as the name&lt;/li&gt;
+&lt;li&gt;Repeat for done jobs&lt;/li&gt;
+&lt;li&gt;Click the Disk symbol to save these settings
+It should look as in the image below
+&lt;img alt="linear Jobs" src="http://dschien.github.io/images/201406/datasink.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="add-a-file-sink"&gt;Add a File Sink&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;On Node 'Text Sink' add a new file sink&lt;/li&gt;
+&lt;li&gt;Select all variables from the data source jobs, including ticks&lt;/li&gt;
+&lt;li&gt;Set a file name
+&lt;img alt="linear Jobs" src="http://dschien.github.io/images/201406/filesink.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="add-new-chart"&gt;Add new Chart&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Right-click the Charts Node, title 'Jobs', type Time Series&lt;/li&gt;
+&lt;li&gt;Select the 'Jobs' Data source you just created&lt;/li&gt;
+&lt;li&gt;Pick both series&lt;/li&gt;
+&lt;li&gt;Set a title, and y-axis lable&lt;/li&gt;
+&lt;li&gt;Save settings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="run"&gt;Run&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What do you see? -&amp;gt; the graph is pretty much unreadable&lt;/li&gt;
+&lt;li&gt;Repeat with the maximum number of jobs&lt;/li&gt;
+&lt;li&gt;In eclipse, select the project folder and click 'Refresh'&lt;/li&gt;
+&lt;li&gt;A file jobs.{date} should appear, open it with Excel, if you please&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="linear Jobs" src="http://dschien.github.io/images/201406/chart-linear.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;h3 id="automatically-stop-the-simulation-on-jobs-complete"&gt;Automatically stop the simulation on Jobs complete&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Add a new local variable &lt;code&gt;idleWorkers&lt;/code&gt; to the UserObserver&lt;/li&gt;
+&lt;li&gt;In the branch for empty queue and idle workers, increment the &lt;code&gt;idleWorkers&lt;/code&gt; variabel&lt;/li&gt;
+&lt;li&gt;At the end of the &lt;code&gt;go&lt;/code&gt; method, test if the &lt;code&gt;numWorkers == idleWorkers&lt;/code&gt;, in that case run &lt;code&gt;RunEnvironment.getInstance().endRun();&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select "Source" &amp;gt; Organize Imports to declare the class RunEnvironment &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="userobserver-complete_2"&gt;UserObserver complete&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunEnvironment&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stop&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UserObserver&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="n"&gt;clearAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numJobs&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="n"&gt;createWorkers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;idleWorkers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+        &lt;span class="n"&gt;ask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt; &lt;span class="n"&gt;worker&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                    &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+                &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                    &lt;span class="c1"&gt;// all jobs done&lt;/span&gt;
+                    &lt;span class="n"&gt;idleWorkers&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;
+
+                &lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="c1"&gt;// let the worker work on it&lt;/span&gt;
+            &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isJobDone&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt;
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;
+                &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="c1"&gt;// we've completed our work&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idleWorkers&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="n"&gt;RunEnvironment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getInstance&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;endRun&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;getNumOpenJobs&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;getNumDoneJobs&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="run_1"&gt;Run&lt;/h3&gt;
+&lt;p&gt;We should now see something like this
+&lt;img alt="linear Jobs" src="http://dschien.github.io/images/201406/linear-jobs.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;h3 id="github-commit_2"&gt;Github commit&lt;/h3&gt;
+&lt;p&gt;You can get the github sources via commit &lt;a href="https://github.com/dschien/NormalJobs/commit/66cef351683115a3790e070d49b8e042bf88cd83"&gt;66cef351683115a3790e070d49b8e042bf88cd83&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="phase-4-normalising"&gt;Phase 4 - Normalising&lt;/h2&gt;
+&lt;p&gt;Our model is completely linear. We'd like to simulate an s-shaped curve for the work done.
+Because we'd like to be as quick as possible, we plan to achieve this by distributing work in our open work pool as a normal distribution 
+horizontally reflected.
+&lt;img alt="sigma" src="http://dschien.github.io/images/201406/sigma.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;p&gt;We can do calculate requirements relative to some min requirement level we pick.
+&lt;img alt="increment" src="http://dschien.github.io/images/201406/increment.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;p&gt;Idea: We'll assign requirements to a job in proportion to the probability of the normal distribution.&lt;/p&gt;
+&lt;h3 id="refactoring"&gt;Refactoring&lt;/h3&gt;
+&lt;p&gt;Our jobs will have varying number of requirements. It makes sense to control the later, as the number of jobs is a function of the
+number of requirements.
+- In &lt;code&gt;UserGlobalsAndPanelFactory&lt;/code&gt; change the variable &lt;code&gt;numJobs&lt;/code&gt; number of jobs to &lt;code&gt;numRequirements&lt;/code&gt;
+- also increase the value boundary to 10000
+- add a new slider &lt;code&gt;numberSteps&lt;/code&gt; and &lt;code&gt;workIncrement&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="initial-jobs-by-requirements-normaly-distributed-using-libraries"&gt;Initial Jobs by requirements, normaly distributed - using libraries&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;We need an implementation of the error function to calculate the CDF of the normal distribution&lt;/li&gt;
+&lt;li&gt;Usually we don't want to implement each method we need, so we use existing libs&lt;/li&gt;
+&lt;li&gt;We use norm function from the Apache stats lib&lt;/li&gt;
+&lt;li&gt;download the &lt;a href="http://commons.apache.org/proper/commons-math/download_math.cgi"&gt;binary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;extract, copy the &lt;code&gt;commons-math3-3.3.jar&lt;/code&gt; to the &lt;code&gt;lib&lt;/code&gt; folder in your eclipse project&lt;/li&gt;
+&lt;li&gt;go to the java perspective, browse the &lt;code&gt;lib&lt;/code&gt; folder, right click the jar file &amp;gt; Build Path &amp;gt; 'Add  to Build Path'&lt;/li&gt;
+&lt;li&gt;Return to the Relogo perspective&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="calculating-the-job-requirements-upper-limit-in-userobserver"&gt;Calculating the Job Requirements upper limit in &lt;code&gt;UserObserver&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;create two new variables for mean and standard deviation &lt;code&gt;def mu = 0 and def sigma = 1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a new instance of NormalDistribution &lt;code&gt;NormalDistribution norm = new NormalDistribution(mu, sigma)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;minLevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;workIncrement&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c1"&gt;// job effort at least double the min work increment (at least 2 steps per job)&lt;/span&gt;
+
+&lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;freeRequirements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;numRequirements&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;minLevel&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;numberSteps&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;freeRequirements&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;numRequirements&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;"Number of Requirements that can vary is less than 10% of total - you won't see much variation"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;// the maximum number of requirements per job batch&lt;/span&gt;
+&lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;upperBound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;sigma&lt;/span&gt; &lt;span class="c1"&gt;// ~99% of all req covered&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;We add some minimum requirements, so that the min is not zero&lt;/li&gt;
+&lt;li&gt;The upperBound is our upper sampling limit -&amp;gt; thus ~99% of all samples will be in this interval. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="creating-jobs-with-requirement-levels-in-userobserver"&gt;Creating Jobs with Requirement Levels in &lt;code&gt;UserObserver&lt;/code&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numberSteps&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;x_i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;  &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;upperBound&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;numberSteps&lt;/span&gt;
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;x_j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;upperBound&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;numberSteps&lt;/span&gt;
+
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;_p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;norm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_p&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;freeRequirements&lt;/span&gt;  &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;minLevel&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;numWorkers&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_p&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;freeRequirements&lt;/span&gt;  &lt;span class="c1"&gt;// normalise to total number of reqs&lt;/span&gt;
+
+            &lt;span class="c1"&gt;// our actual num of requirements = limit - pdf&lt;/span&gt;
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;
+
+            &lt;span class="c1"&gt;// get requirements per workers relative to number of workers&lt;/span&gt;
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;job_requirements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;
+
+            &lt;span class="c1"&gt;//  create job in batches with this level of requirement&lt;/span&gt;
+            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addFirst&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;job_requirements&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addLast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;job_requirements&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="n"&gt;assignedRequirements&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;We want each worker to have roughly the same amount of requirements to deal with &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We use the apache CDF function to calculate our requirements levels&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now we'll work from the mean to the outside, create jobs and add those to head and tail of our queue
+&lt;img alt="work done" src="http://dschien.github.io/images/201406/increment.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We add a new job, symetrically to front and end end of the queue&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the worker creation closure add &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;increment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;workIncrement&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="userobserver-complete_3"&gt;&lt;code&gt;UserObserver&lt;/code&gt; complete&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;
+
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UtilityG&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;normaljobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commons&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;math3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;distribution&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NormalDistribution&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunEnvironment&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stop&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;repast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simphony&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;relogo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UserObserver&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ReLogoObserver&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;openJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;LinkedList&lt;/span&gt;
+    &lt;span class="n"&gt;Queue&lt;/span&gt; &lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Queue&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Setup&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="n"&gt;clearAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;// initialise jobs&lt;/span&gt;
+        &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;mu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="c1"&gt;//              def mu = numRequirements/ 2&lt;/span&gt;
+        &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;sigma&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="n"&gt;NormalDistribution&lt;/span&gt; &lt;span class="n"&gt;norm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;NormalDistribution&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mu&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;assignedRequirements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+        &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;minLevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;workIncrement&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c1"&gt;// job effort at least double the min work increment (at least 2 steps per job)&lt;/span&gt;
+
+        &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;freeRequirements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;numRequirements&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;minLevel&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;numberSteps&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;freeRequirements&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;numRequirements&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;"Number of Requirements that can vary is less than 10% of total - you won't see much variation"&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="c1"&gt;// the maximum number of requirements per job batch&lt;/span&gt;
+        &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;upperBound&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;sigma&lt;/span&gt; &lt;span class="c1"&gt;// ~99% of all req covered&lt;/span&gt;
+
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numberSteps&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;x_i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;upperBound&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;numberSteps&lt;/span&gt;
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;x_j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;upperBound&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;numberSteps&lt;/span&gt;
+
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;_p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;norm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_p&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;freeRequirements&lt;/span&gt;  &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;minLevel&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;numWorkers&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_p&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;freeRequirements&lt;/span&gt;  &lt;span class="c1"&gt;// normalise to total number of reqs&lt;/span&gt;
+
+            &lt;span class="c1"&gt;// our actual num of requirements = limit - pdf&lt;/span&gt;
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;
+
+            &lt;span class="c1"&gt;// get requirements per workers relative to number of workers&lt;/span&gt;
+            &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;job_requirements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;
+
+            &lt;span class="c1"&gt;//  create job in batches with this level of requirement&lt;/span&gt;
+            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addFirst&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;job_requirements&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addLast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;job_requirements&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="n"&gt;assignedRequirements&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="n"&gt;createWorkers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;increment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;workIncrement&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Go&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;idleWorkers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+        &lt;span class="n"&gt;ask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt; &lt;span class="n"&gt;worker&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                    &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;               
+                &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;                    
+                    &lt;span class="c1"&gt;// all jobs done&lt;/span&gt;
+                    &lt;span class="n"&gt;idleWorkers&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;
+
+                &lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="c1"&gt;// let the worker work on it&lt;/span&gt;
+            &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isJobDone&lt;/span&gt;&lt;span class="p"&gt;()){&lt;/span&gt;                
+                &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;              
+                &lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="c1"&gt;// we've completed our work&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idleWorkers&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;numWorkers&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="n"&gt;RunEnvironment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getInstance&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;endRun&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;getNumOpenJobs&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;getNumDoneJobs&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;doneJobs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="run_2"&gt;Run&lt;/h3&gt;
+&lt;p&gt;This is what we'd like to see
+&lt;img alt="sigma" src="http://dschien.github.io/images/201406/sigmoid_results.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;h3 id="github-commit_3"&gt;Github commit&lt;/h3&gt;
+&lt;p&gt;You can get the github sources via commit &lt;a href="https://github.com/dschien/NormalJobs/commit/8e06d5b689098746b6f3380ff36cba0826e21ac0"&gt;8e06d5b689098746b6f3380ff36cba0826e21ac0&lt;/a&gt; &lt;/p&gt;</summary></entry><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
 &lt;p&gt;You have to start somewhere
 &lt;/p&gt;
-&lt;h1&gt;I test pelican&lt;/h1&gt;
+&lt;h1 id="i-test-pelican"&gt;I test pelican&lt;/h1&gt;
 &lt;p&gt;This is my first post&lt;/p&gt;
 &lt;div class="ipynb"&gt;
-
-
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -20,17 +832,14 @@
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[]:
+In []:
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;/div&gt;</summary></entry></feed>
