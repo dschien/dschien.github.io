@@ -843,7 +843,7 @@ phenomena &lt;em&gt;emerge&lt;/em&gt; from micro-level rules and agent behaviour
 &lt;li&gt;The Observer is responsible for mainting open and done job pools&lt;/li&gt;
 &lt;li&gt;Our workers are toiling away on jobs given by the Observer&lt;/li&gt;
 &lt;li&gt;The difference is that our workers now learn and solve more requirements with each additional time step
-&lt;img alt="learn" src="http://dschien.github.io/images/201406/sigmoid_results.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/li&gt;
+&lt;img alt="learn" src="http://dschien.github.io/images/201406/learn.png" style="width: 2200px; height: auto; max-width: 100%;"/&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary></entry><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
 &lt;p&gt;You have to start somewhere
 &lt;/p&gt;
