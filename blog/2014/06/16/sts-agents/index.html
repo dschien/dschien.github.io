@@ -1792,6 +1792,7 @@ at the University of Bristol.
 </li>
 <li><a href="#sources-from-github">Sources from Github</a><ul>
 <li><a href="#changing-to-a-specific-commit">Changing to a specific commit</a></li>
+<li><a href="#changing-branch-in-eclipe">Changing Branch in Eclipe</a></li>
 </ul>
 </li>
 </ul>
@@ -1852,8 +1853,10 @@ at the University of Bristol.
 <li><a href="#github-commit_3">Github commit</a></li>
 </ul>
 </li>
+<li><a href="#reflection">Reflection</a></li>
 </ul>
 </li>
+<li><a href="#real-jobs">Real Jobs</a></li>
 </ul>
 </div>
 <h1 id="preparation">Preparation</h1>
@@ -1924,6 +1927,15 @@ Choose the SATA controller "Add Harddisk" &gt; Choose existing and choose the <c
 <li>On the command line do</li>
 <li><code>git log</code> to find a tag</li>
 <li><code>git checkout &lt;tag&gt;</code></li>
+</ul>
+<h3 id="changing-branch-in-eclipe">Changing Branch in Eclipe</h3>
+<ul>
+<li>Right click project &gt; Team &gt; Show History</li>
+</ul>
+<p><img alt="eclipse update" src="http://dschien.github.io/images/201406/history.png" style="width: 514px; height: auto; max-width: 100%;"/></p>
+<ul>
+<li>Right click on specific version &gt; Checkout</li>
+<li>If there are local changes (for example files in srg-gen) these need to be either stashed, or deleted</li>
 </ul>
 <h1 id="building-the-model">Building the Model</h1>
 <p>The goal is to develop an alternative modeling exploration to reproduce the results from 
@@ -2587,7 +2599,25 @@ number of requirements.
 <p>This is what we'd like to see
 <img alt="sigma" src="http://dschien.github.io/images/201406/sigmoid_results.png" style="width: 600px; height: auto; max-width: 100%;"/></p>
 <h3 id="github-commit_3">Github commit</h3>
-<p>You can get the github sources via commit <a href="https://github.com/dschien/NormalJobs/commit/8e06d5b689098746b6f3380ff36cba0826e21ac0">8e06d5b689098746b6f3380ff36cba0826e21ac0</a> </p></div>
+<p>You can get the github sources via commit <a href="https://github.com/dschien/NormalJobs/commit/8e06d5b689098746b6f3380ff36cba0826e21ac0">8e06d5b689098746b6f3380ff36cba0826e21ac0</a> </p>
+<h2 id="reflection">Reflection</h2>
+<ul>
+<li>Obviously, this goes against the whole purpose of Agent Based Modelling: 
+One of the main principles of Agent Based Modelling is that we're constructing our system such that macro-level 
+phenomena <em>emerge</em> from micro-level rules and agent behaviour</li>
+<li>In the above example we have plugged in the macro-level distribution of requirements</li>
+<li>Thus, there isn't much we can learn from this</li>
+</ul>
+<h1 id="real-jobs">Real Jobs</h1>
+<ul>
+<li>We now construct a model that is more realistic by implementing learning</li>
+<li>The source is at <a href="https://github.com/dschien/RealJobs">https://github.com/dschien/RealJobs</a></li>
+<li>The basic model is identical to the normal jobs model above</li>
+<li>The Observer is responsible for mainting open and done job pools</li>
+<li>Our workers are toiling away on jobs given by the Observer</li>
+<li>The difference is that our workers now learn and solve more requirements with each additional time step
+<img alt="learn" src="http://dschien.github.io/images/201406/sigmoid_results.png" style="width: 600px; height: auto; max-width: 100%;"/></li>
+</ul></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">

@@ -19,6 +19,7 @@ at the University of Bristol.
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#sources-from-github"&gt;Sources from Github&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#changing-to-a-specific-commit"&gt;Changing to a specific commit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#changing-branch-in-eclipe"&gt;Changing Branch in Eclipe&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -79,8 +80,10 @@ at the University of Bristol.
 &lt;li&gt;&lt;a href="#github-commit_3"&gt;Github commit&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;a href="#reflection"&gt;Reflection&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;a href="#real-jobs"&gt;Real Jobs&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;h1 id="preparation"&gt;Preparation&lt;/h1&gt;
@@ -151,6 +154,15 @@ Choose the SATA controller "Add Harddisk" &amp;gt; Choose existing and choose th
 &lt;li&gt;On the command line do&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;git log&lt;/code&gt; to find a tag&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;git checkout &amp;lt;tag&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="changing-branch-in-eclipe"&gt;Changing Branch in Eclipe&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Right click project &amp;gt; Team &amp;gt; Show History&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="eclipse update" src="http://dschien.github.io/images/201406/history.png" style="width: 514px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Right click on specific version &amp;gt; Checkout&lt;/li&gt;
+&lt;li&gt;If there are local changes (for example files in srg-gen) these need to be either stashed, or deleted&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="building-the-model"&gt;Building the Model&lt;/h1&gt;
 &lt;p&gt;The goal is to develop an alternative modeling exploration to reproduce the results from 
@@ -814,7 +826,25 @@ number of requirements.
 &lt;p&gt;This is what we'd like to see
 &lt;img alt="sigma" src="http://dschien.github.io/images/201406/sigmoid_results.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/p&gt;
 &lt;h3 id="github-commit_3"&gt;Github commit&lt;/h3&gt;
-&lt;p&gt;You can get the github sources via commit &lt;a href="https://github.com/dschien/NormalJobs/commit/8e06d5b689098746b6f3380ff36cba0826e21ac0"&gt;8e06d5b689098746b6f3380ff36cba0826e21ac0&lt;/a&gt; &lt;/p&gt;</summary></entry><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
+&lt;p&gt;You can get the github sources via commit &lt;a href="https://github.com/dschien/NormalJobs/commit/8e06d5b689098746b6f3380ff36cba0826e21ac0"&gt;8e06d5b689098746b6f3380ff36cba0826e21ac0&lt;/a&gt; &lt;/p&gt;
+&lt;h2 id="reflection"&gt;Reflection&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Obviously, this goes against the whole purpose of Agent Based Modelling: 
+One of the main principles of Agent Based Modelling is that we're constructing our system such that macro-level 
+phenomena &lt;em&gt;emerge&lt;/em&gt; from micro-level rules and agent behaviour&lt;/li&gt;
+&lt;li&gt;In the above example we have plugged in the macro-level distribution of requirements&lt;/li&gt;
+&lt;li&gt;Thus, there isn't much we can learn from this&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="real-jobs"&gt;Real Jobs&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;We now construct a model that is more realistic by implementing learning&lt;/li&gt;
+&lt;li&gt;The source is at &lt;a href="https://github.com/dschien/RealJobs"&gt;https://github.com/dschien/RealJobs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The basic model is identical to the normal jobs model above&lt;/li&gt;
+&lt;li&gt;The Observer is responsible for mainting open and done job pools&lt;/li&gt;
+&lt;li&gt;Our workers are toiling away on jobs given by the Observer&lt;/li&gt;
+&lt;li&gt;The difference is that our workers now learn and solve more requirements with each additional time step
+&lt;img alt="learn" src="http://dschien.github.io/images/201406/sigmoid_results.png" style="width: 600px; height: auto; max-width: 100%;"/&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>Testing Pelican</title><link href="http://dschien.github.io/blog/2014/06/16/testing-pelican/" rel="alternate"></link><updated>2014-06-16T13:00:00+01:00</updated><author><name>Daniel Schien</name></author><id>tag:dschien.github.io,2014-06-16:blog/2014/06/16/testing-pelican/</id><summary type="html">
 &lt;p&gt;You have to start somewhere
 &lt;/p&gt;
 &lt;h1 id="i-test-pelican"&gt;I test pelican&lt;/h1&gt;
